@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Periscole.Front", "Periscole.Front\Periscole.Front.csproj", "{A00AD957-5E46-491B-BBD0-B81EAB44D366}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Periscole.Api", "Periscole.Api\Periscole.Api.csproj", "{10303F5C-4AB9-470B-BD8E-2B66750A24C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Periscole.Bdd", "Periscole.Bdd\Periscole.Bdd.csproj", "{59D6315A-0AEB-4E39-8779-E1A3F0C98CB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Periscole.Service", "Periscole.Service\Periscole.Service.csproj", "{8DC5BE38-92ED-4735-BDD8-D799D7AF20B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Front", "Front", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{061D1D65-463F-4A0E-B5B6-E90705B92499}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Middleware", "Middleware", "{F51435D5-CB20-4413-8A1E-54202D01C00D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A00AD957-5E46-491B-BBD0-B81EAB44D366}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A00AD957-5E46-491B-BBD0-B81EAB44D366}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A00AD957-5E46-491B-BBD0-B81EAB44D366}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A00AD957-5E46-491B-BBD0-B81EAB44D366}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10303F5C-4AB9-470B-BD8E-2B66750A24C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10303F5C-4AB9-470B-BD8E-2B66750A24C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10303F5C-4AB9-470B-BD8E-2B66750A24C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10303F5C-4AB9-470B-BD8E-2B66750A24C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59D6315A-0AEB-4E39-8779-E1A3F0C98CB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59D6315A-0AEB-4E39-8779-E1A3F0C98CB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59D6315A-0AEB-4E39-8779-E1A3F0C98CB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59D6315A-0AEB-4E39-8779-E1A3F0C98CB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DC5BE38-92ED-4735-BDD8-D799D7AF20B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DC5BE38-92ED-4735-BDD8-D799D7AF20B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DC5BE38-92ED-4735-BDD8-D799D7AF20B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DC5BE38-92ED-4735-BDD8-D799D7AF20B6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A00AD957-5E46-491B-BBD0-B81EAB44D366} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{10303F5C-4AB9-470B-BD8E-2B66750A24C6} = {F51435D5-CB20-4413-8A1E-54202D01C00D}
+		{59D6315A-0AEB-4E39-8779-E1A3F0C98CB4} = {061D1D65-463F-4A0E-B5B6-E90705B92499}
+		{8DC5BE38-92ED-4735-BDD8-D799D7AF20B6} = {F51435D5-CB20-4413-8A1E-54202D01C00D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B651E488-4096-451E-9929-B5B9EC99E5D9}
+	EndGlobalSection
+EndGlobal
