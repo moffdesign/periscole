@@ -10,8 +10,7 @@ namespace Periscole.Bdd
 {
     public class PeriscoleContext : DbContext
     {
-        public PeriscoleContext(DbContextOptions<PeriscoleContext> options)
-            : base(options)
+        public PeriscoleContext(DbContextOptions<PeriscoleContext> options) : base(options)
         {
         }
 
