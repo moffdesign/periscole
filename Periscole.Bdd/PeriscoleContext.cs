@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -56,6 +57,9 @@ namespace Periscole.Bdd
 
             // Configure the relationships and other settings here
             base.OnModelCreating(modelBuilder);
+
+            // Enregistre automatiquement toutes les class qui implémente l'interface IEntityTypeConfiguration
+            //modelBuilder.ApplyConfigurationsFromAssembly(this.GetType().Assembly);
         }
     }
 
