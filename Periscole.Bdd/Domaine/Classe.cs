@@ -17,21 +17,10 @@ namespace Periscole.Bdd.Domaine
         /// </summary>
         public required string Numero { get; set; }
         public override string Libelle { get => "Classe de : " + Numero; }
-        /// <summary>
-        /// Année scolaire (ex. "2021/2022", "2024-2025")
-        /// </summary>
-        public string? AnneeScolaire { get; set; }
+        
         public string? Description { get; set; }
 
-        /// <summary>
-        /// Professeur principal de la classe (ex. M. Antoine Elan).
-        /// </summary>
-        public int? IdProfesseur { get; set; }
-
-        /// <summary>
-        /// Elèves affectés à la classe pour l'année scolaire en cours.
-        /// </summary>
-        public List<Eleve> Eleves { get; set; } = new List<Eleve>();
+        
     }
     
 }
