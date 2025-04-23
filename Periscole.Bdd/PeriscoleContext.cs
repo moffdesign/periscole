@@ -21,6 +21,8 @@ namespace Periscole.Bdd
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             /*
             // Configuration de l'entité Professeur
             modelBuilder.Entity<Professeur>()
@@ -54,7 +56,11 @@ namespace Periscole.Bdd
             */
 
             // Ajout des tables
-            modelBuilder.Entity<EleveClasse>().ToTable("EleveClasse");
+            modelBuilder.Entity<EleveClasse>().ToTable("Eleve_Classe");
+            modelBuilder.Entity<Matiere>().ToTable("Program_Matiere");
+            modelBuilder.Entity<Enseigner>().ToTable("Program_Enseigner");
+            modelBuilder.Entity<Cours>().ToTable("Program_Cours");
+            modelBuilder.Entity<EmploiDuTemps>().ToTable("Program_EmploiDuTemps");
 
             //Déclaration des PK clés
             //modelBuilder.Entity<EleveClasse>().HasKey(ec => new { ec.EleveId, ec.AnneeScoId, ec.ClasseId });
@@ -66,10 +72,6 @@ namespace Periscole.Bdd
             //    .HasForeignKey(ec => ec.AnneeScoID);
 
             //Transformation des enum en code
-
-
-            // Configure the relationships and other settings here
-            base.OnModelCreating(modelBuilder);
 
             // Enregistre automatiquement toutes les class qui implémente l'interface IEntityTypeConfiguration
             //modelBuilder.ApplyConfigurationsFromAssembly(this.GetType().Assembly);

@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Periscole.Bdd.Domaine
 {
-    public class Matiere : Entity
+    /// <summary>
+    /// Contrôle-Examen-Séquence.
+    /// </summary>
+    public class TypeControle : Entity
     {
-        public string Groupe { get; set; }
+        //
     }
 }
