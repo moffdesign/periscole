@@ -24,10 +24,10 @@ namespace Periscole.Bdd.Repositories
             services.AddDbContext<PeriscoleContext>(static (serviceProvider, options) =>
             {
                 IConfiguration configuration = serviceProvider.GetService<IConfiguration>();
-                string? connectionString = configuration.GetConnectionString("PeriscoleDBConnexion");
+                string? connectionString = configuration.GetConnectionString("PeriscoleDevConnexion");
                 if (string.IsNullOrEmpty(connectionString))
                 {
-                    throw new InvalidOperationException("La chaîne de connexion 'PeriscoleDBConnexion' est introuvable dans la configuration.");
+                    throw new InvalidOperationException("La chaîne de connexion 'PeriscoleDevConnexion' est introuvable dans la configuration.");
                 }
                 options.UseSqlServer(connectionString);
             });

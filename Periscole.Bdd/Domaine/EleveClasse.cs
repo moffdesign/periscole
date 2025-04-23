@@ -10,17 +10,17 @@ namespace Periscole.Bdd.Domaine
     public class EleveClasse
     {
         [ForeignKey("AnneeSco")]
-        public int IdAnneeSco { get; set; }
+        public int AnneeScoID { get; set; }
         public required AnneeSco AnneeSco { get; set; }
 
         [ForeignKey("Classe")]
-        public int IdClasse { get; set; }
+        public int ClasseId { get; set; }
         public required Classe Classe { get; set; }
 
         /// <summary>
         /// Professeur principal de la classe (ex. M. Antoine Elan).
         /// </summary>
-        public int? IdProfesseur { get; set; }
+        public int? ProfesseurId { get; set; }
         public Professeur? Professeur { get; set; }
 
         /// <summary>

@@ -11,9 +11,7 @@ namespace Periscole.Bdd
 {
     public class PeriscoleContext : DbContext
     {
-        public PeriscoleContext(DbContextOptions<PeriscoleContext> options) : base(options)
-        {
-        }
+        public PeriscoleContext(DbContextOptions<PeriscoleContext> options) : base(options) { }
 
         public DbSet<EleveClasse> EleveClasses { get; set; }
         public DbSet<AnneeSco> AnneesScolaires { get; set; }
@@ -54,6 +52,21 @@ namespace Periscole.Bdd
                 .HasIndex(e => e.Nom)
                 .IsUnique();
             */
+
+            // Ajout des tables
+            modelBuilder.Entity<EleveClasse>().ToTable("EleveClasse");
+
+            //Déclaration des PK clés
+            //modelBuilder.Entity<EleveClasse>().HasKey(ec => new { ec.EleveId, ec.AnneeScoId, ec.ClasseId });
+
+            // Déclaration des Foreign Key
+            //modelBuilder.Entity<EleveClasse>()
+            //    .HasOne(ec => ec.AnneeSco)
+            //    .WithMany(a => a.EleveClasses)
+            //    .HasForeignKey(ec => ec.AnneeScoID);
+
+            //Transformation des enum en code
+
 
             // Configure the relationships and other settings here
             base.OnModelCreating(modelBuilder);

@@ -1,7 +1,12 @@
+using Periscole.Front.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Intégration des repositories 
+builder.Services.RepositoryRegisterService();
 
 var app = builder.Build();
 
