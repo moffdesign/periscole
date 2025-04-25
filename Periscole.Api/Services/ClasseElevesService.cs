@@ -9,11 +9,11 @@ using Periscole.Bdd.Interfaces;
 
 namespace Periscole.Bdd.Repositories
 {
-    public class ClasseElevesRepository : IClasseElevesRepository
+    public class ClasseElevesService : IClasseElevesService
     {
         private readonly PeriscoleContext _context;
 
-        public ClasseElevesRepository(PeriscoleContext dbContext)
+        public ClasseElevesService(PeriscoleContext dbContext)
         {
             _context = dbContext;
         }

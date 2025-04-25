@@ -7,7 +7,7 @@ using Periscole.Bdd.Domaine;
 
 namespace Periscole.Bdd.Interfaces
 {
-    public interface IClasseElevesRepository
+    public interface IClasseElevesService
     {
         /// <summary>
         /// Récupérer tous les élèves d'une classe pour une année scolaire donnée.
