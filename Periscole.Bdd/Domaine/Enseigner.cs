@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Periscole.Bdd.Domaine
 {
-    public class Enseigner : EntBase
+    public class Enseigner : BaseEntity
     {
         //[Key]
         //public int Id { get; set; }
@@ -15,6 +15,7 @@ namespace Periscole.Bdd.Domaine
         public int MatiereId { get; set; }
         public int ClasseId { get; set; }
         public int ProfesseurId { get; set; }
+        public int GroupeMatiereId { get; set; }
         public int NombreHeures { get; set; }
         public Int16 CodeTri { get; set; }
 

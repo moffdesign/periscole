@@ -8,6 +8,6 @@ namespace Periscole.Bdd.Domaine
 {
     public class Matiere : Entity
     {
-        public string Groupe { get; set; }
+        //public int GroupeMatiereId { get; set; }
     }
 }

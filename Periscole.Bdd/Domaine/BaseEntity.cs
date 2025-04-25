@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace Periscole.Bdd.Domaine
 {
-    public class EntBase
+    public abstract class BaseEntity
     {
         [Key]
         public int Id { get; set; }
 
-        public DateTime DateSaisie { get; set; }
-        public string SaisiePar { get; set; } = "dbuser";
-        public DateTime DateMaj { get; set; }
-        public string MajPar { get; set; } = "dbuser";
+        public DateTime DateCreation { get; set; }
+        public string Utilisateur { get; set; } = "dbuser";     // on met le pseudo de l'utilisateur qui a créé l'entité.
+        public DateTime DateModification { get; set; }
+        public string ModifiePar { get; set; } = "dbuser";
         public DateTime DateCloture { get; set; }
         public string CloturePar { get; set; } = "dbuser";
 

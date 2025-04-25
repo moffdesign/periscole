@@ -56,11 +56,25 @@ namespace Periscole.Bdd
             */
 
             // Ajout des tables
-            modelBuilder.Entity<EleveClasse>().ToTable("Eleve_Classe");
+            modelBuilder.Entity<Eleve>().ToTable("Eleve_Eleve");
+            modelBuilder.Entity<EleveClasse>().ToTable("Eleve_Classe");     // Affectation à une classe pour l'AnneeSco
+            
+            
             modelBuilder.Entity<Matiere>().ToTable("Program_Matiere");
+            modelBuilder.Entity<GroupeMatiere>().ToTable("Program_MatiereGroupe");  //GroupeMatiere
             modelBuilder.Entity<Enseigner>().ToTable("Program_Enseigner");
             modelBuilder.Entity<Cours>().ToTable("Program_Cours");
             modelBuilder.Entity<EmploiDuTemps>().ToTable("Program_EmploiDuTemps");
+
+            modelBuilder.Entity<Controle>().ToTable("Note_Controle");
+            modelBuilder.Entity<NoteEleve>().ToTable("Note_Eleve");
+            modelBuilder.Entity<NoteClasse>().ToTable("Note_Classe");
+            modelBuilder.Entity<BulletinNote>().ToTable("Note_Bulletin");
+            modelBuilder.Entity<LigneBulletin>().ToTable("Note_LigneBulletin");
+
+            modelBuilder.Entity<AnneeSco>().ToTable("Referentiel_AnneeSco");
+            modelBuilder.Entity<Parametre>().ToTable("Referentiel_Parametre");
+            modelBuilder.Entity<Historique>().ToTable("Referentiel_Historique");
 
             //Déclaration des PK clés
             //modelBuilder.Entity<EleveClasse>().HasKey(ec => new { ec.EleveId, ec.AnneeScoId, ec.ClasseId });

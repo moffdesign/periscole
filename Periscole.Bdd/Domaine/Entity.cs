@@ -10,7 +10,7 @@ namespace Periscole.Bdd.Domaine
     /// <summary>
     /// Base Entity.
     /// </summary>
-    public class Entity : EntBase
+    public abstract class Entity : BaseEntity
     {
         /// <summary>
         /// ID de l'objet parent et ascendant pour les relations chaînées en cascade.

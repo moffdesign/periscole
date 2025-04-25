@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Periscole.Bdd.Domaine
 {
-    public class Personne: Entity
+    public abstract class Personne: Entity
     {
         public string Nom { get; set; } = string.Empty;
         public string Prenom { get; set; } = string.Empty;

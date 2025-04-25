@@ -11,7 +11,7 @@ namespace Periscole.Bdd.Domaine
     /// Classe qui représente un cours
     /// Cours dispensé par un professeur à une classe, à une date donnée, et pour une durée déterminée.
     /// </summary>
-    public class Cours : EntBase
+    public class Cours : BaseEntity
     {
         //[Key]
         //public int Id { get; set; }
