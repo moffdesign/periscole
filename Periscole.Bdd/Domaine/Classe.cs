@@ -8,7 +8,7 @@ namespace Periscole.Bdd.Domaine
 {
     /// <summary>
     /// Classe de l'élève.
-    /// désigne un regroupement d'élève pour une année scolaire.
+    /// regroupe les élèves d'une classe pour une année scolaire.
     /// </summary>
     public class Classe : Entity
     {
@@ -20,7 +20,16 @@ namespace Periscole.Bdd.Domaine
         
         public string? Description { get; set; }
 
-        
+        /// <summary>
+        /// tous les élèves affectés à la classe.
+        /// </summary>
+        public ICollection<ClasseEleve> ClasseEleves { get; set; } = [];
+
+        /// <summary>
+        /// Professeur principal de la classe (ex. M. Antoine Ela).
+        /// </summary>
+        public int? ProfesseurId { get; set; }
+        public Professeur? Professeur { get; set; }
     }
     
 }

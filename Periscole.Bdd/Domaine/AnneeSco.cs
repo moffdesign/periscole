@@ -17,7 +17,9 @@ namespace Periscole.Bdd.Domaine
         /// </summary>
         public string? AnneeScolaire { get; set; }
 
-        public DateTime RentreeScolaire { get; set; }
-        public DateTime DateFinAnnee { get; set; }
+        public DateTime? RentreeScolaire { get; set; }
+        public DateTime? FinAnneeScolaire { get; set; }
+
+        //public ICollection<ClasseEleve> ClasseEleves { get; set; } = [];
     }
 }

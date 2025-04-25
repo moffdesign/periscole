@@ -23,6 +23,8 @@ namespace Periscole.Bdd.Domaine
         public DateTime? DateRadiation { get; set; }
         public string? MotifRadiation { get; set; }
 
-    
+        // toutes les classes fréquentées dans l'établissement par l'élève
+        //public ICollection<ClasseEleve> ClasseEleves { get; set; } = [];
+
     }
 }

@@ -11,11 +11,14 @@ namespace Periscole.Bdd
 {
     public class PeriscoleContext : DbContext
     {
-        public DbSet<EleveClasse> EleveClasses { get; set; }
-        public DbSet<AnneeSco> AnneesScolaires { get; set; }
+        
+        public DbSet<AnneeSco> AnneesSco { get; set; }
         public DbSet<Eleve> Eleves { get; set; }
         public DbSet<Classe> Classes { get; set; }
+        public DbSet<ClasseEleve> ClasseEleves { get; set; }
         public DbSet<Professeur> Professeurs { get; set; }
+
+        public DbSet<Matiere> Matiere { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -55,7 +58,9 @@ namespace Periscole.Bdd
 
             // Ajout des tables
             modelBuilder.Entity<Eleve>().ToTable("Eleve_Eleve");
-            modelBuilder.Entity<EleveClasse>().ToTable("Eleve_Classe");     // Affectation élève à une classe pour l'AnneeSco
+
+            modelBuilder.Entity<Classe>().ToTable("Classe_Classe");
+            modelBuilder.Entity<ClasseEleve>().ToTable("Classe_Eleve");     // Affectation élèves à une classe pour l'AnneeSco
             
             
             modelBuilder.Entity<Matiere>().ToTable("Program_Matiere").UseTpcMappingStrategy();
@@ -75,11 +80,11 @@ namespace Periscole.Bdd
             modelBuilder.Entity<Historique>().ToTable("Referentiel_Historique");
 
             //Déclaration des PK clés
-            // Affectation élève à une classe pour l'AnneeSco
-            modelBuilder.Entity<EleveClasse>().HasKey(ec => new { ec.EleveId, ec.AnneeScoId, ec.ClasseId });
+            // Affectation élèves à une classe pour l'AnneeSco
+            modelBuilder.Entity<ClasseEleve>().HasKey(ec => new { ec.AnneeScoId, ec.ClasseId, ec.EleveId });
 
             // Déclaration des Foreign Key
-            modelBuilder.Entity<EleveClasse>().HasOne(ec => ec.Eleve).WithMany(e => e.E).HasForeignKey(ec => ec.EleveId);
+            //modelBuilder.Entity<EleveClasse>().HasOne(ec => ec.Eleve).WithMany(e => e.EleveClasses).HasForeignKey(ec => ec.EleveId);
 
             //modelBuilder.Entity<EleveClasse>()
             //    .HasOne(ec => ec.Classe)
