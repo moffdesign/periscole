@@ -11,8 +11,6 @@ namespace Periscole.Bdd
 {
     public class PeriscoleContext : DbContext
     {
-        public PeriscoleContext(DbContextOptions<PeriscoleContext> options) : base(options) { }
-
         public DbSet<EleveClasse> EleveClasses { get; set; }
         public DbSet<AnneeSco> AnneesScolaires { get; set; }
         public DbSet<Eleve> Eleves { get; set; }
@@ -21,7 +19,7 @@ namespace Periscole.Bdd
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            //base.OnModelCreating(modelBuilder);
 
             /*
             // Configuration de l'entité Professeur
@@ -57,10 +55,10 @@ namespace Periscole.Bdd
 
             // Ajout des tables
             modelBuilder.Entity<Eleve>().ToTable("Eleve_Eleve");
-            modelBuilder.Entity<EleveClasse>().ToTable("Eleve_Classe");     // Affectation à une classe pour l'AnneeSco
+            modelBuilder.Entity<EleveClasse>().ToTable("Eleve_Classe");     // Affectation élève à une classe pour l'AnneeSco
             
             
-            modelBuilder.Entity<Matiere>().ToTable("Program_Matiere");
+            modelBuilder.Entity<Matiere>().ToTable("Program_Matiere").UseTpcMappingStrategy();
             modelBuilder.Entity<GroupeMatiere>().ToTable("Program_MatiereGroupe");  //GroupeMatiere
             modelBuilder.Entity<Enseigner>().ToTable("Program_Enseigner");
             modelBuilder.Entity<Cours>().ToTable("Program_Cours");
@@ -77,19 +75,32 @@ namespace Periscole.Bdd
             modelBuilder.Entity<Historique>().ToTable("Referentiel_Historique");
 
             //Déclaration des PK clés
-            //modelBuilder.Entity<EleveClasse>().HasKey(ec => new { ec.EleveId, ec.AnneeScoId, ec.ClasseId });
+            // Affectation élève à une classe pour l'AnneeSco
+            modelBuilder.Entity<EleveClasse>().HasKey(ec => new { ec.EleveId, ec.AnneeScoId, ec.ClasseId });
 
             // Déclaration des Foreign Key
+            modelBuilder.Entity<EleveClasse>().HasOne(ec => ec.Eleve).WithMany(e => e.E).HasForeignKey(ec => ec.EleveId);
+
+            //modelBuilder.Entity<EleveClasse>()
+            //    .HasOne(ec => ec.Classe)
+            //    .WithMany(c => c.EleveClasse)
+            //    .HasForeignKey(ec => ec.ClasseId);
+
             //modelBuilder.Entity<EleveClasse>()
             //    .HasOne(ec => ec.AnneeSco)
             //    .WithMany(a => a.EleveClasses)
-            //    .HasForeignKey(ec => ec.AnneeScoID);
+            //    .HasForeignKey(ec => ec.AnneeScoId);
 
             //Transformation des enum en code
 
             // Enregistre automatiquement toutes les class qui implémente l'interface IEntityTypeConfiguration
             //modelBuilder.ApplyConfigurationsFromAssembly(this.GetType().Assembly);
+
+            base.OnModelCreating(modelBuilder);
         }
+
+        public PeriscoleContext(DbContextOptions<PeriscoleContext> options) : base(options) { }
+
     }
 
 }

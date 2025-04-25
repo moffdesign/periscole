@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace Periscole.Bdd.Domaine
 {
+    /// <summary>
+    /// Classe de l'élève.
+    /// affectation d'un élève à une classe pour une année scolaire donnée. 
+    /// </summary>
     public class EleveClasse
     {
         [ForeignKey("AnneeSco")]
@@ -17,15 +21,9 @@ namespace Periscole.Bdd.Domaine
         public int ClasseId { get; set; }
         public required Classe Classe { get; set; }
 
-        /// <summary>
-        /// Professeur principal de la classe (ex. M. Antoine Ela).
-        /// </summary>
-        public int? ProfesseurId { get; set; }
-        public Professeur? Professeur { get; set; }
+        [ForeignKey("Eleve")]
+        public int EleveId { get; set; }
+        public required Eleve Eleve { get; set; }
 
-        /// <summary>
-        /// Elèves affectés à la classe pour l'année scolaire en cours.
-        /// </summary>
-        public virtual ICollection<Eleve> Eleves { get; set; } = [];
     }
 }
