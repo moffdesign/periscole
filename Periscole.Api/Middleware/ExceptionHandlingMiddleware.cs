@@ -1,7 +1,5 @@
-﻿using Periscole.Bdd.Domaine;
-using System.Text.Json;
-using Microsoft.AspNetCore.Http;
-using System.Text.Json;
+﻿using System.Text.Json;
+using Periscole.Bdd.Domaine;
 
 namespace Periscole.Api.Middleware
 {

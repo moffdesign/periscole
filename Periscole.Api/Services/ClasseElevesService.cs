@@ -11,45 +11,24 @@ namespace Periscole.Bdd.Repositories
 {
     public class ClasseElevesService : IClasseElevesService
     {
-        private readonly PeriscoleDbContext _context;
+        private IClasseEleveRepository _classeEleveRepository;
 
-        public ClasseElevesService(PeriscoleDbContext dbContext)
+        public ClasseElevesService(IClasseEleveRepository repoClasse)
         {
-            _context = dbContext;
+            _classeEleveRepository = repoClasse;
         }
 
-        public async Task AffectationEleveClasseAsync(int anneeScoId, int classeId, int eleveId)
+        public async Task<Result<bool>> AffectationEleveDansUneClasseAsync(int anneeScoId, int classeId, int eleveId)
         {
-            var anneeSco = await _context.AnneesSco.FindAsync(anneeScoId);
-            var classe = await _context.Classes.FindAsync(classeId);
-            var eleve = await _context.Eleves.FindAsync(eleveId);
+            var result = await _classeEleveRepository.AffecterEleveDansClasseAsync(anneeScoId, classeId, eleveId);
 
-            if (anneeSco == null || classe == null || eleve == null)
+            if (result)
             {
-                throw new ArgumentException("Invalid IDs provided for AnneeSco, Classe, or Eleve.");
-            }
-
-            var existeDeja = await _context.ClasseEleves.AnyAsync(ec => ec.EleveId == eleveId && ec.AnneeScoId == anneeScoId && ec.ClasseId == classeId);
-
-            if (!existeDeja)
-            {
-                var nouvelleAffectation = new ClasseEleve
-                {
-                    AnneeScoId = anneeScoId,
-                    //AnneeSco = anneeSco,
-                    ClasseId = classeId,
-                    //Classe = classe,
-                    EleveId = eleveId,
-                    //Eleve = eleve
-                };
-
-
-                _context.ClasseEleves.Add(nouvelleAffectation);
-                await _context.SaveChangesAsync();
+                return Result<bool>.Ok(true);
             }
             else
             {
-                throw new InvalidOperationException("L'élève est déjà affecté à cette classe pour l'année scolaire donnée.");
+                return Result<bool>.Fail("ECHEC","L'affectation a échoué.", 400);
             }
         }
 
@@ -59,18 +38,23 @@ namespace Periscole.Bdd.Repositories
         /// <param name="classeId">ID Classe</param>
         /// <param name="anneeScoId">ID AnnéeSco</param>
         /// <returns>list élèves</returns>
-        public async Task<IList<Eleve>> RecupererElevesClasseAsync(int classeId, int anneeScoId)
+        public async Task<IList<Eleve>> RecupererElevesClasseAsync(int anneeScoId, int classeId)
         {
-            var elevesClasse = await _context.ClasseEleves
-                .Where(ec => ec.ClasseId == classeId && ec.AnneeScoId == anneeScoId)
-                .Include(ec => ec.Eleve)
-                .ToListAsync();
-            return elevesClasse.Select(ec => ec.Eleve).ToList();
+            var result = await _classeEleveRepository.RecupererElevesParClasseAsync(anneeScoId, classeId);
+
+            // Vérifier si la liste d'élèves est vide ou nulle
+            if (result != null && result.Count > 0)
+            {
+                return result;
+            }
+            else
+            {
+                // Gérer le cas où aucun élève n'est trouvé
+                // Vous pouvez lancer une exception ou retourner une liste vide
+                //throw new Exception("Aucun élève trouvé pour cette classe et cette année scolaire.");
+                return new List<Eleve>();
+            }
         }
 
-        //void IClasseElevesRepository.AffectationEleveClasseAsync(int anneeScoId, int classeId, int eleveId)
-        //{
-        //    throw new NotImplementedException();
-        //}
     }
 }

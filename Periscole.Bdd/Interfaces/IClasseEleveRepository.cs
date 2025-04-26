@@ -25,7 +25,7 @@ namespace Periscole.Bdd.Interfaces
         /// <param name="classeId">classe</param>
         /// <param name="eleveId">élève</param>
         /// <returns></returns>
-        Task<bool> SupprimerAffectationEleveAsync(int anneeScoId, int classeId, int eleveId);
+        Task<Result<bool>> SupprimerAffectationEleveAsync(int anneeScoId, int classeId, int eleveId);
 
         /// <summary>
         /// Récupérer tous les élèves d'une classe pour une année scolaire donnée.

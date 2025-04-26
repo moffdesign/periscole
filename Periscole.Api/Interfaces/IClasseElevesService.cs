@@ -20,7 +20,7 @@ namespace Periscole.Bdd.Interfaces
         /// <summary>
         /// Ajouter une affectation d'élève à une classe pour une année scolaire donnée.
         /// </summary>
-        Task AffectationEleveClasseAsync(int anneeScoId, int classeId, int eleveId);
+        Task<Result<bool>> AffectationEleveDansUneClasseAsync(int anneeScoId, int classeId, int eleveId);
 
         //void AffectationEleveClasse(ClasseEleve classeEleve);
 

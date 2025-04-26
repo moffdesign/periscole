@@ -1,4 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
+using Periscole.Bdd.Interfaces;
+using Periscole.Bdd.Repositories;
 
 namespace Periscole.Api.Extensions
 {
@@ -6,8 +8,13 @@ namespace Periscole.Api.Extensions
     {
         public static IServiceCollection RepositoryRegisterService(this IServiceCollection services)
         {
-            // Register your repositories here, for example:
+            // les services du Repository
+             services.AddScoped<IClasseEleveRepository, ClasseEleveRepository>();
+
+            // les services de l'Api
+            services.AddScoped<IClasseElevesService, ClasseElevesService>();
             // services.AddScoped<IYourRepository, YourRepositoryImplementation>();
+
             return services;
         }
     }
