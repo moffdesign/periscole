@@ -16,7 +16,7 @@ builder.Services.AddOpenApi();
 var connectionString = builder.Configuration.GetConnectionString("PeriscoleDbConnexion");
 
 // Exemple : si tu as un DbContext nommé PeriscoleDbContext
-builder.Services.AddDbContext<PeriscoleContext>(options =>
+builder.Services.AddDbContext<PeriscoleDbContext>(options =>
     options.UseSqlServer(connectionString));
 
 // Intégration des repositories !

@@ -11,9 +11,9 @@ namespace Periscole.Bdd.Repositories
 {
     public class ClasseElevesService : IClasseElevesService
     {
-        private readonly PeriscoleContext _context;
+        private readonly PeriscoleDbContext _context;
 
-        public ClasseElevesService(PeriscoleContext dbContext)
+        public ClasseElevesService(PeriscoleDbContext dbContext)
         {
             _context = dbContext;
         }

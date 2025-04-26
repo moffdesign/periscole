@@ -9,7 +9,7 @@ using Periscole.Bdd.Domaine;
 
 namespace Periscole.Bdd
 {
-    public class PeriscoleContext : DbContext
+    public class PeriscoleDbContext : DbContext
     {
         
         public DbSet<AnneeSco> AnneesSco { get; set; }
@@ -104,7 +104,7 @@ namespace Periscole.Bdd
             base.OnModelCreating(modelBuilder);
         }
 
-        public PeriscoleContext(DbContextOptions<PeriscoleContext> options) : base(options) { }
+        public PeriscoleDbContext(DbContextOptions<PeriscoleDbContext> options) : base(options) { }
 
     }
 

@@ -11,10 +11,10 @@ namespace Periscole.Bdd.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        private readonly PeriscoleContext _databaseContext;
+        private readonly PeriscoleDbContext _databaseContext;
         private readonly DbSet<T> _dbSet;
 
-        public GenericRepository(PeriscoleContext context)
+        public GenericRepository(PeriscoleDbContext context)
         {
             _databaseContext = context;
             _dbSet = context.Set<T>();
