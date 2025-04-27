@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Periscole.Bdd.Domaine
+namespace Periscole.Api
 {
     public class Result<T>
     {

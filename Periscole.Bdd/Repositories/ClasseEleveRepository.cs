@@ -37,11 +37,8 @@ namespace Periscole.Bdd.Repositories
                 var nouvelleAffectation = new ClasseEleve
                 {
                     AnneeScoId = anneeScoId,
-                    //AnneeSco = anneeSco,
                     ClasseId = classeId,
-                    //Classe = classe,
-                    EleveId = eleveId,
-                    //Eleve = eleve
+                    EleveId = eleveId
                 };
 
 
@@ -51,7 +48,8 @@ namespace Periscole.Bdd.Repositories
             }
             else
             {
-                throw new InvalidOperationException("L'élève est déjà affecté à cette classe pour l'année scolaire donnée.");
+                //throw new InvalidOperationException("L'élève est déjà affecté à cette classe pour l'année scolaire donnée.");
+                return false;
             }
             
         }
@@ -69,7 +67,7 @@ namespace Periscole.Bdd.Repositories
                 .Cast<Eleve>()];
         }
 
-        public async Task<Result<bool>> SupprimerAffectationEleveAsync(int anneeScoId, int classeId, int eleveId)
+        public async Task<bool> SupprimerAffectationEleveAsync(int anneeScoId, int classeId, int eleveId)
         {
             var affectation = await _context.ClasseEleves.FirstOrDefaultAsync(ec =>
             ec.EleveId == eleveId &&
@@ -80,11 +78,11 @@ namespace Periscole.Bdd.Repositories
             {
                 _context.ClasseEleves.Remove(affectation);
                 await _context.SaveChangesAsync();
-                return Result<bool>.Ok(true); // Indique que la suppression a réussi
+                return true; // Indique que la suppression a réussi
             }
             else
             {
-                return Result<bool>.Fail("AFFECTATION_NOT_FOUND", "Aucune affectation trouvée pour cet élève.", 404);
+                return false;
             }
             
         }
