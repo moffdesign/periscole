@@ -77,6 +77,11 @@ namespace Periscole.Bdd.Repositories
             return await query.ToListAsync();
         }
 
+        public IQueryable<T> Query()
+        {
+            return _dbSet.AsQueryable();
+        }
+
         public async Task UpdateAsync(T entity)
         {
             _dbSet.Update(entity);

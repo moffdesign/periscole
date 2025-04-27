@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Azure.Core;
 using Microsoft.EntityFrameworkCore;
 using Periscole.Api;
 using Periscole.Bdd.Domaine;
@@ -13,10 +14,13 @@ namespace Periscole.Bdd.Repositories
     public class ClasseElevesService : IClasseElevesService
     {
         private IClasseEleveRepository _classeEleveRepository;
+        //private readonly SupprimerAffectationRequestValidator _validator;
+        private readonly ILogger<ClasseElevesService> _logger;
 
-        public ClasseElevesService(IClasseEleveRepository repoClasse)
+        public ClasseElevesService(IClasseEleveRepository repoClasse, ILogger<ClasseElevesService> logger)
         {
             _classeEleveRepository = repoClasse;
+            _logger = logger;
         }
 
         public async Task<Result<bool>> AffectaterEleveDansUneClasseAsync(int anneeScoId, int classeId, int eleveId)
@@ -61,10 +65,12 @@ namespace Periscole.Bdd.Repositories
 
             if (affectation)
             {
+                _logger.LogInformation("Affectation supprimée pour élève {EleveId}", eleveId);
                 return Result<bool>.Ok(true);
             }
             else
             {
+                _logger.LogWarning("Affectation non trouvée pour élève {EleveId}", eleveId);
                 return Result<bool>.Fail("AFFECTATION_NOT_FOUND", "Aucune affectation trouvée pour cet élève.", 404);
             }
         }

@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using Periscole.Bdd.Domaine;
 using Periscole.Bdd.Interfaces;
 using Periscole.Bdd.Repositories;
 
@@ -10,6 +11,9 @@ namespace Periscole.Api.Extensions
         {
             // les services du Repository
              services.AddScoped<IClasseEleveRepository, ClasseEleveRepository>();
+
+             services.AddScoped<IGenericRepository<Matiere>, GenericRepository<Matiere>>();
+             services.AddScoped<IGenericRepository<Enseigner>, GenericRepository<Enseigner>>();
 
             // les services de l'Api
             services.AddScoped<IClasseElevesService, ClasseElevesService>();

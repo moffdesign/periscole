@@ -12,10 +12,12 @@ namespace Periscole.Bdd.Domaine
         //[Key]
         //public int Id { get; set; }
 
+        public int AnneeScoId { get; set; }
         public int MatiereId { get; set; }
         public int ClasseId { get; set; }
         public int ProfesseurId { get; set; }
         public int GroupeMatiereId { get; set; }
+        public decimal Coefficient { get; set; }
         public int NombreHeures { get; set; }
         public Int16 CodeTri { get; set; }
 

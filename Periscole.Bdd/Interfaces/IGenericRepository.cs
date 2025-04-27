@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Periscole.Bdd.Domaine;
 
 namespace Periscole.Bdd.Interfaces
 {
@@ -14,5 +15,7 @@ namespace Periscole.Bdd.Interfaces
         Task UpdateAsync(T entity);
         Task DeleteByIdAsync(int id);
         Task SaveAsync();
+
+        IQueryable<T> Query();
     }
 }
