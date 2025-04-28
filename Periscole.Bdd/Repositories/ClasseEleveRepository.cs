@@ -43,15 +43,11 @@ namespace Periscole.Bdd.Repositories
 
 
                 _context.ClasseEleves.Add(nouvelleAffectation);
-                await _context.SaveChangesAsync();
-                return true; // Indique que l'affectation a réussi
+                await _context.SaveChangesAsync().ContinueWith(task => task.Result > 0);
+                //return true; // Indique que l'affectation a réussi
             }
-            else
-            {
-                //throw new InvalidOperationException("L'élève est déjà affecté à cette classe pour l'année scolaire donnée.");
-                return false;
-            }
-            
+
+            return false;
         }
 
         public async Task<List<Eleve>> RecupererElevesParClasseAsync(int anneeScoId, int classeId)

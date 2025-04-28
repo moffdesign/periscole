@@ -19,6 +19,7 @@ namespace Periscole.Bdd
         public DbSet<Professeur> Professeurs { get; set; }
 
         public DbSet<Matiere> Matiere { get; set; }
+        public DbSet<Enseigner> Enseigner { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -57,9 +58,9 @@ namespace Periscole.Bdd
             */
 
             // Ajout des tables
-            modelBuilder.Entity<Eleve>().ToTable("Eleve_Eleve");
+            modelBuilder.Entity<Eleve>().ToTable("Eleve_Eleve").UseTpcMappingStrategy();
 
-            modelBuilder.Entity<Classe>().ToTable("Classe_Classe");
+            modelBuilder.Entity<Classe>().ToTable("Classe_Classe").UseTpcMappingStrategy();
             modelBuilder.Entity<ClasseEleve>().ToTable("Classe_Eleve");     // Affectation élèves à une classe pour l'AnneeSco
             
             
@@ -77,7 +78,7 @@ namespace Periscole.Bdd
 
             modelBuilder.Entity<AnneeSco>().ToTable("Referentiel_AnneeSco");
             modelBuilder.Entity<Parametre>().ToTable("Referentiel_Parametre");
-            modelBuilder.Entity<Historique>().ToTable("Referentiel_Historique");
+            modelBuilder.Entity<Historique>().ToTable("Referentiel_Historique").UseTpcMappingStrategy();
 
             //Déclaration des PK clés
             // Affectation élèves à une classe pour l'AnneeSco
