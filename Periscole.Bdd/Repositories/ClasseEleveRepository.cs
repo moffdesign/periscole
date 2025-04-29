@@ -30,7 +30,7 @@ namespace Periscole.Bdd.Repositories
                 throw new ArgumentException("Invalid IDs provided for AnneeSco, Classe, or Eleve.");
             }
 
-            var existeDeja = await _context.ClasseEleves.AnyAsync(ec => ec.EleveId == eleveId && ec.AnneeScoId == anneeScoId && ec.ClasseId == classeId);
+            var existeDeja = await _context.ClassesEleves.AnyAsync(ec => ec.EleveId == eleveId && ec.AnneeScoId == anneeScoId && ec.ClasseId == classeId);
 
             if (!existeDeja)
             {
@@ -42,7 +42,7 @@ namespace Periscole.Bdd.Repositories
                 };
 
 
-                _context.ClasseEleves.Add(nouvelleAffectation);
+                _context.ClassesEleves.Add(nouvelleAffectation);
                 await _context.SaveChangesAsync().ContinueWith(task => task.Result > 0);
                 //return true; // Indique que l'affectation a réussi
             }
@@ -52,7 +52,7 @@ namespace Periscole.Bdd.Repositories
 
         public async Task<List<Eleve>> RecupererElevesParClasseAsync(int anneeScoId, int classeId)
         {
-            var elevesClasse = await _context.ClasseEleves
+            var elevesClasse = await _context.ClassesEleves
                .Where(ec => ec.ClasseId == classeId && ec.AnneeScoId == anneeScoId)
                .Include(ec => ec.Eleve)
                .ToListAsync();
@@ -65,14 +65,14 @@ namespace Periscole.Bdd.Repositories
 
         public async Task<bool> SupprimerAffectationEleveAsync(int anneeScoId, int classeId, int eleveId)
         {
-            var affectation = await _context.ClasseEleves.FirstOrDefaultAsync(ec =>
+            var affectation = await _context.ClassesEleves.FirstOrDefaultAsync(ec =>
             ec.EleveId == eleveId &&
             ec.AnneeScoId == anneeScoId &&
             ec.ClasseId == classeId);
 
             if (affectation != null)
             {
-                _context.ClasseEleves.Remove(affectation);
+                _context.ClassesEleves.Remove(affectation);
                 await _context.SaveChangesAsync();
                 return true; // Indique que la suppression a réussi
             }

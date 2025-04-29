@@ -8,7 +8,7 @@ using Periscole.Bdd.Domaine;
 
 namespace Periscole.Bdd.Interfaces
 {
-    public interface IClasseElevesService
+    public interface IClasseEleveService
     {
         /// <summary>
         /// Ajouter une affectation d'élève à une classe pour une année scolaire donnée.

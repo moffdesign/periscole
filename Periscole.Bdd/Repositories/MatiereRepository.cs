@@ -19,13 +19,13 @@ namespace Periscole.Bdd.Repositories
 
         public Task<bool> AjouterUneMatiere(Matiere matiere)
         {
-            _context.Matiere.Add(matiere);
+            _context.Matieres.Add(matiere);
             return _context.SaveChangesAsync().ContinueWith(task => task.Result > 0);
         }
 
         public Task<bool> ModifierUneMatiere(Matiere matiere)
         {
-            var matiereExistante = _context.Matiere.Find(matiere.Id);
+            var matiereExistante = _context.Matieres.Find(matiere.Id);
             if (matiereExistante == null)
             {
                 //throw new ArgumentException("La matière à modifier n'existe pas.");
@@ -44,7 +44,7 @@ namespace Periscole.Bdd.Repositories
 
         public Task<IList<Matiere>> RecupererListeDesMatieres()
         {
-            var matieres = _context.Matiere.ToList();
+            var matieres = _context.Matieres.ToList();
             return Task.FromResult<IList<Matiere>>(matieres);
 
         }
@@ -52,7 +52,7 @@ namespace Periscole.Bdd.Repositories
         public Task<Matiere?> RecupererMatiereAyantLePlusFortCoeff(int anneeScoId, int classeId)
         {
             // On récupère la matière ayant le plus fort coefficient pour une classe donnée dans une année scolaire donnée
-            var matiereList = _context.Matiere.ToList();
+            var matiereList = _context.Matieres.ToList();
             var enseignerList = _context.Enseigner.ToList();
 
             var matiere = enseignerList
@@ -70,7 +70,7 @@ namespace Periscole.Bdd.Repositories
 
         public Task<IList<Matiere>> RecupererMatieresParAnneeSco(int anneeScoId)
         {
-            var matiereList = _context.Matiere.ToList();
+            var matiereList = _context.Matieres.ToList();
             var enseignerList = _context.Enseigner.ToList();
 
             var matieres = enseignerList
@@ -86,7 +86,7 @@ namespace Periscole.Bdd.Repositories
 
         public Task<IList<Matiere>> RecupererMatieresParClasseEtAnneeSco(int anneeScoId, int classeId)
         {
-            var matiereList = _context.Matiere.ToList();
+            var matiereList = _context.Matieres.ToList();
             var enseignerList = _context.Enseigner.ToList();
 
             var matieres = enseignerList
@@ -101,7 +101,7 @@ namespace Periscole.Bdd.Repositories
 
         public Task<IList<Matiere>> RecupererMatieresParClasseProfesseurAnneeSco(int anneeScoId, int classeId, int professeurId)
         {
-            var matiereList = _context.Matiere.ToList();
+            var matiereList = _context.Matieres.ToList();
             var enseignerList = _context.Enseigner.ToList();
 
             var matieres = enseignerList
@@ -116,7 +116,7 @@ namespace Periscole.Bdd.Repositories
 
         public Task<IList<Matiere>> RecupererMatieresParProfesseur(int anneeScoId, int professeurId)
         {
-            var matiereList = _context.Matiere.ToList();
+            var matiereList = _context.Matieres.ToList();
             var enseignerList = _context.Enseigner.ToList();
 
             var matieres = enseignerList
@@ -131,7 +131,7 @@ namespace Periscole.Bdd.Repositories
 
         public Task<Matiere?> RecupererUneMatiere(int matiereId)
         {
-            var matiere = _context.Matiere.Find(matiereId);
+            var matiere = _context.Matieres.Find(matiereId);
             if (matiere == null)
             {
                 return Task.FromResult<Matiere?>(null);
@@ -141,13 +141,13 @@ namespace Periscole.Bdd.Repositories
 
         public Task<bool> SupprimerUneMatiere(int matiereId)
         {
-            var matiere = _context.Matiere.Find(matiereId);
+            var matiere = _context.Matieres.Find(matiereId);
             if (matiere == null)
             {
                 return Task.FromResult(false);
             }
             // Vérifier si la matière est utilisée dans d'autres entités avant de la supprimer
-            _context.Matiere.Remove(matiere);
+            _context.Matieres.Remove(matiere);
             return _context.SaveChangesAsync().ContinueWith(task => task.Result > 0);
 
         }

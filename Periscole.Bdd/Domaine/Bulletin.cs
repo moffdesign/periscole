@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Periscole.Bdd.Domaine
 {
-    public class BulletinNote : BaseEntity
+    public class Bulletin : BaseEntity
     {
         public int AnneeScoId { get; set; }
         public int EleveId { get; set; }
-        public int ClasseId { get; set; }
+        //public int ClasseId { get; set; }
         public int Periode { get; set; } // Mensuelle, Trimestre ou Semestre
         public Int16 Numero { get; set; } // Numéro de la période
         public decimal Moyenne { get; set; } // Moyenne obtenue par l'élève

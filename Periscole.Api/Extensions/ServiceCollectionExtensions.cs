@@ -16,7 +16,7 @@ namespace Periscole.Api.Extensions
              services.AddScoped<IGenericRepository<Enseigner>, GenericRepository<Enseigner>>();
 
             // les services de l'Api
-            services.AddScoped<IClasseElevesService, ClasseElevesService>();
+            services.AddScoped<IClasseEleveService, ClasseEleveService>();
             // services.AddScoped<IYourRepository, YourRepositoryImplementation>();
 
             return services;

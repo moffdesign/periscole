@@ -13,13 +13,25 @@ namespace Periscole.Bdd
     {
         
         public DbSet<AnneeSco> AnneesSco { get; set; }
+        public DbSet<Parametre> Parametres { get; set; }
         public DbSet<Eleve> Eleves { get; set; }
         public DbSet<Classe> Classes { get; set; }
-        public DbSet<ClasseEleve> ClasseEleves { get; set; }
+        public DbSet<ClasseEleve> ClassesEleves { get; set; }
         public DbSet<Professeur> Professeurs { get; set; }
 
-        public DbSet<Matiere> Matiere { get; set; }
+        public DbSet<Matiere> Matieres { get; set; }
+        public DbSet<GroupeMatiere> GroupesMatieres { get; set; }
         public DbSet<Enseigner> Enseigner { get; set; }
+        public DbSet<Cours> Cours { get; set; }
+
+
+        public DbSet<Controle> Controles { get; set; }
+        public DbSet<NoteEleve> NotesEleves { get; set; }
+        public DbSet<NoteClasse> NotesClasses { get; set; }
+        public DbSet<Sequence> Sequences { get; set; }
+        public DbSet<NoteSequence> NotesSequences { get; set; }
+        public DbSet<Bulletin> Bulletins { get; set; }
+        public DbSet<LigneBulletin> LignesBulletins { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -73,8 +85,10 @@ namespace Periscole.Bdd
             modelBuilder.Entity<Controle>().ToTable("Note_Controle");
             modelBuilder.Entity<NoteEleve>().ToTable("Note_Eleve");
             modelBuilder.Entity<NoteClasse>().ToTable("Note_Classe");
-            modelBuilder.Entity<BulletinNote>().ToTable("Note_Bulletin");
+            modelBuilder.Entity<Bulletin>().ToTable("Note_Bulletin");
             modelBuilder.Entity<LigneBulletin>().ToTable("Note_LigneBulletin");
+            modelBuilder.Entity<Sequence>().ToTable("Note_Sequence");
+            modelBuilder.Entity<NoteSequence>().ToTable("Note_NoteSequence");
 
             modelBuilder.Entity<AnneeSco>().ToTable("Referentiel_AnneeSco");
             modelBuilder.Entity<Parametre>().ToTable("Referentiel_Parametre");

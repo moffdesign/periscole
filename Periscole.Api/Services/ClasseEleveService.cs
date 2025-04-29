@@ -11,13 +11,13 @@ using Periscole.Bdd.Interfaces;
 
 namespace Periscole.Bdd.Repositories
 {
-    public class ClasseElevesService : IClasseElevesService
+    public class ClasseEleveService : IClasseEleveService
     {
         private IClasseEleveRepository _classeEleveRepository;
         //private readonly SupprimerAffectationRequestValidator _validator;
-        private readonly ILogger<ClasseElevesService> _logger;
+        private readonly ILogger<ClasseEleveService> _logger;
 
-        public ClasseElevesService(IClasseEleveRepository repoClasse, ILogger<ClasseElevesService> logger)
+        public ClasseEleveService(IClasseEleveRepository repoClasse, ILogger<ClasseEleveService> logger)
         {
             _classeEleveRepository = repoClasse;
             _logger = logger;
