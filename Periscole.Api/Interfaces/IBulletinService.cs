@@ -1,4 +1,6 @@
-﻿namespace Periscole.Api.Interfaces
+﻿using Periscole.Bdd.Domaine;
+
+namespace Periscole.Api.Interfaces
 {
     public interface IBulletinService
     {

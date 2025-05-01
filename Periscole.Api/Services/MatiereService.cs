@@ -17,7 +17,7 @@ namespace Periscole.Api.Services
             _logger = logger;
         }
 
-        public async Task<Result<bool>> AjouterUneMatiere(Matiere matiere)
+        public async Task<Result<bool>> AjouterMatiere(Matiere matiere)
         {
             try
             {
@@ -31,7 +31,7 @@ namespace Periscole.Api.Services
             return Result<bool>.Ok(true);
         }
         
-        public async Task<Result<bool>> ModifierUneMatiere(Matiere matiere)
+        public async Task<Result<bool>> ModifierMatiere(Matiere matiere)
         {
             try
             {
@@ -46,7 +46,7 @@ namespace Periscole.Api.Services
 
         }
 
-        public async Task<Result<Matiere>> RecupererUneMatiere(int matiereId)
+        public async Task<Result<Matiere>> RecupererMatiere(int matiereId)
         {
             try
             {
@@ -65,7 +65,7 @@ namespace Periscole.Api.Services
 
         }
 
-        public async Task<Result<bool>> SupprimerUneMatiere(int matiereId)
+        public async Task<Result<bool>> SupprimerMatiere(int matiereId)
         {
             try
             {
@@ -107,10 +107,15 @@ namespace Periscole.Api.Services
         /// </summary>
         /// <param name="anneeScoId">année</param>
         /// <returns>flux matières</returns>
-        public async Task<Result<IList<Matiere>>> RecupererMatieresParAnneeSco(int anneeScoId)
+        public async Task<Result<IList<Matiere>>> RecupererMatieresAnneeSco(int anneeScoId)
         {
             try
             {
+                //if (!anneeScoId.HasValue)
+                //{
+                //    return Result<IList<Matiere>>.Fail("INVALID_INPUT", "L'identifiant de l'année scolaire est requis.", 400);
+                //}
+
                 var matieres = await _enseignerRepository
                     .Query()
                     .Where(e => e.AnneeScoId == anneeScoId)
@@ -142,7 +147,7 @@ namespace Periscole.Api.Services
         /// <param name="anneeScoId">année</param>
         /// <param name="professeurId">professeur</param>
         /// <returns>flux matières</returns>
-        public async Task<Result<IList<Matiere>>> RecupererMatieresParProfesseur(int anneeScoId, int professeurId)
+        public async Task<Result<IList<Matiere>>> RecupererMatieresProfesseur(int anneeScoId, int professeurId)
         {
             try
             {
@@ -177,7 +182,7 @@ namespace Periscole.Api.Services
         /// <param name="anneeScoId">année</param>
         /// <param name="classeId">classe</param>
         /// <returns>flux matières</returns>
-        public async Task<Result<IList<Matiere>>> RecupererMatieresParClasseEtAnneeSco(int anneeScoId, int classeId)
+        public async Task<Result<IList<Matiere>>> RecupererMatieresClasse(int anneeScoId, int classeId)
         {
             try
             {
@@ -274,6 +279,6 @@ namespace Periscole.Api.Services
             }
         }
 
-        
+
     }
 }
