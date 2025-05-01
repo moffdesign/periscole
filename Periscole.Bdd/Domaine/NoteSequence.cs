@@ -12,7 +12,7 @@ namespace Periscole.Bdd.Domaine
         public int EleveId { get; set; }
         public int EnseignerId { get; set; }
         public DateTime DateEffective { get; set; }
-        public decimal NoteEleve { get; set; }
+        public decimal Note { get; set; }
         //public decimal Coefficiant { get; set; }
         //public decimal Produit { get; set; }
         public Int16 Rang { get; set; }
