@@ -10,7 +10,7 @@ namespace Periscole.Api.Interfaces
 
         Task<Result<bool>> SupprimerUneMatiere(int matiereId);
         Task<Result<Matiere>> RecupererUneMatiere(int matiereId);
-        Task<Result<IList<Matiere>>> RecupererListeDesMatieres();
+        Task<Result<IList<Matiere>>> RecupererListeMatieres();
         Task<Result<IList<Matiere>>> RecupererMatieresParAnneeSco(int anneeScoId);
         Task<Result<IList<Matiere>>> RecupererMatieresParProfesseur(int anneeScoId, int professeurId);
         

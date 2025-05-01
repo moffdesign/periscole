@@ -83,7 +83,7 @@ namespace Periscole.Api.Services
         /// Récupérer la liste de toutes les matières.
         /// </summary>
         /// <returns>flux matières</returns>
-        public async Task<Result<IList<Matiere>>> RecupererListeDesMatieres()
+        public async Task<Result<IList<Matiere>>> RecupererListeMatieres()
         {
             try
             {
