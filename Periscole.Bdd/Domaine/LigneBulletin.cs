@@ -11,6 +11,8 @@ namespace Periscole.Bdd.Domaine
         public int BulletinNoteId { get; set; }
         public int MatiereId { get; set; }
         public decimal Moyenne { get; set; } = 0;   // Moyenne de la matière 
+        public decimal Coefficiant { get; set; }
+        public decimal Produit { get; set; }
         public decimal MoyenneClasse { get; set; } = 0;
         public Int16 Rang { get; set; } // Rang de l'élève dans la matière
         

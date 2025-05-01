@@ -16,8 +16,9 @@ namespace Periscole.Bdd
         public DbSet<Parametre> Parametres { get; set; }
         public DbSet<Eleve> Eleves { get; set; }
         public DbSet<Classe> Classes { get; set; }
-        public DbSet<ClasseEleve> ClassesEleves { get; set; }
         public DbSet<Professeur> Professeurs { get; set; }
+
+        public DbSet<ClasseEleve> ClassesEleves { get; set; }
 
         public DbSet<Matiere> Matieres { get; set; }
         public DbSet<GroupeMatiere> GroupesMatieres { get; set; }
@@ -70,29 +71,29 @@ namespace Periscole.Bdd
             */
 
             // Ajout des tables
-            modelBuilder.Entity<Eleve>().ToTable("Eleve_Eleve").UseTpcMappingStrategy();
+            modelBuilder.Entity<Eleve>().ToTable("Eleve","Eleve").UseTpcMappingStrategy();
 
-            modelBuilder.Entity<Classe>().ToTable("Classe_Classe").UseTpcMappingStrategy();
-            modelBuilder.Entity<ClasseEleve>().ToTable("Classe_Eleve");     // Affectation élèves à une classe pour l'AnneeSco
+            modelBuilder.Entity<Classe>().ToTable("Classe","Classe").UseTpcMappingStrategy();
+            modelBuilder.Entity<ClasseEleve>().ToTable("ClasseEleve", "Eleve");     // Affectation élèves à une classe pour l'AnneeSco
             
             
-            modelBuilder.Entity<Matiere>().ToTable("Program_Matiere").UseTpcMappingStrategy();
-            modelBuilder.Entity<GroupeMatiere>().ToTable("Program_MatiereGroupe");  //GroupeMatiere
-            modelBuilder.Entity<Enseigner>().ToTable("Program_Enseigner");
-            modelBuilder.Entity<Cours>().ToTable("Program_Cours");
-            modelBuilder.Entity<EmploiDuTemps>().ToTable("Program_EmploiDuTemps");
+            modelBuilder.Entity<Matiere>().ToTable("Matiere", "Program").UseTpcMappingStrategy();
+            modelBuilder.Entity<GroupeMatiere>().ToTable("MatiereGroupe", "Program");  //GroupeMatiere
+            modelBuilder.Entity<Enseigner>().ToTable("Enseigner", "Program");
+            modelBuilder.Entity<Cours>().ToTable("Cours", "Program");
+            modelBuilder.Entity<EmploiDuTemps>().ToTable("EmploiDuTemps", "Program");
 
-            modelBuilder.Entity<Controle>().ToTable("Note_Controle");
-            modelBuilder.Entity<NoteEleve>().ToTable("Note_Eleve");
-            modelBuilder.Entity<NoteClasse>().ToTable("Note_Classe");
-            modelBuilder.Entity<Bulletin>().ToTable("Note_Bulletin");
-            modelBuilder.Entity<LigneBulletin>().ToTable("Note_LigneBulletin");
-            modelBuilder.Entity<Sequence>().ToTable("Note_Sequence");
-            modelBuilder.Entity<NoteSequence>().ToTable("Note_NoteSequence");
+            modelBuilder.Entity<Controle>().ToTable("Controle", "Note");
+            modelBuilder.Entity<NoteEleve>().ToTable("NoteEleve", "Note");
+            modelBuilder.Entity<NoteClasse>().ToTable("NoteClasse", "Note");
+            modelBuilder.Entity<Bulletin>().ToTable("Bulletin", "Note");
+            modelBuilder.Entity<LigneBulletin>().ToTable("LigneBulletin", "Note");
+            modelBuilder.Entity<Sequence>().ToTable("Sequence", "Note");
+            modelBuilder.Entity<NoteSequence>().ToTable("NoteSequence", "Note");
 
-            modelBuilder.Entity<AnneeSco>().ToTable("Referentiel_AnneeSco");
-            modelBuilder.Entity<Parametre>().ToTable("Referentiel_Parametre");
-            modelBuilder.Entity<Historique>().ToTable("Referentiel_Historique").UseTpcMappingStrategy();
+            modelBuilder.Entity<AnneeSco>().ToTable("AnneeSco", "Referentiel");
+            modelBuilder.Entity<Parametre>().ToTable("Parametre", "Referentiel");
+            modelBuilder.Entity<Historique>().ToTable("Historique", "Referentiel").UseTpcMappingStrategy();
 
             //Déclaration des PK clés
             // Affectation élèves à une classe pour l'AnneeSco

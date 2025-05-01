@@ -45,9 +45,6 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-// ajout de tous les services pour l'injection de dépendance
-builder.Services.RepositoryRegisterService();
-
 // Intégration de la chaine de connexion
 var connectionString = builder.Configuration.GetConnectionString("PeriscoleDbConnexion");
 

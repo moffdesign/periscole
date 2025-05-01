@@ -13,8 +13,8 @@ namespace Periscole.Bdd.Domaine
         //public int ClasseId { get; set; }
         public int Periode { get; set; } // Mensuelle, Trimestre ou Semestre
         public Int16 Numero { get; set; } // Numéro de la période
-        public decimal Moyenne { get; set; } // Moyenne obtenue par l'élève
-        public int Rang { get; set; }
+        public decimal Moyenne { get; set; } // Moyenne de la période obtenue par l'élève
+        public int Rang { get; set; } // rang dans la classe
 
         public int EffectifClasse { get; set; } // Effectif de la classe
         public decimal MoyenneClasse { get; set; } // (revoir la pertinence de cette info ici.)
