@@ -46,7 +46,7 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 // Intégration de la chaine de connexion
-var connectionString = builder.Configuration.GetConnectionString("PeriscoleDbConnexion");
+var connectionString = builder.Configuration.GetConnectionString("PeriscoleConnexion");
 
 builder.Services.AddDbContext<PeriscoleDbContext>(options =>
     options.UseSqlServer(connectionString));
@@ -66,7 +66,7 @@ builder.Services.RepositoryRegisterService();
 
 var app = builder.Build();
 
-// Test de la connexion à la base
+// Test de la connexion à la bdd.
 using (var scope = app.Services.CreateScope())
 {
     var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
