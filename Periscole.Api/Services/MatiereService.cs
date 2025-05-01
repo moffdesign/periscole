@@ -182,7 +182,7 @@ namespace Periscole.Api.Services
         /// <param name="anneeScoId">année</param>
         /// <param name="classeId">classe</param>
         /// <returns>flux matières</returns>
-        public async Task<Result<IList<Matiere>>> RecupererMatieresClasse(int anneeScoId, int classeId)
+        public async Task<Result<IList<Matiere>>> RecupererMatieresClasseAnneeSco(int anneeScoId, int classeId)
         {
             try
             {

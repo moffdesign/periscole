@@ -22,9 +22,9 @@ namespace Periscole.Api.Controllers
         {
             var result = await _matiereService.RecupererListeMatieres();
 
-            if (result.Success) // Fix: Changed 'IsSuccess' to 'Success' based on the provided Result<T> type signature
+            if (result.Success) 
             {
-                return Ok(result.Data); // Fix: Changed 'Value' to 'Data' based on the provided Result<T> type signature
+                return Ok(result.Data); 
             }
 
             _logger.LogError("Erreur lors de la récupération de la liste des matières : {Errors}", result.Errors);
@@ -32,9 +32,9 @@ namespace Periscole.Api.Controllers
         }
 
         [HttpGet("RecupererMatieresParClasseEtAnneeSco")]
-        public async Task<IActionResult> RecupererMatieresParClasseEtAnneeScoAsync(int anneeScoId, int classeId)
+        public async Task<IActionResult> RecupererMatieresClasseAnneeScoAsync(int anneeScoId, int classeId)
         {
-            var result = await _matiereService.RecupererMatieresParClasseEtAnneeSco(anneeScoId, classeId);
+            var result = await _matiereService.RecupererMatieresClasseAnneeSco(anneeScoId, classeId);
 
             if (result.Success) 
             {
