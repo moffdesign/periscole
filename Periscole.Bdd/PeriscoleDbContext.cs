@@ -11,7 +11,8 @@ namespace Periscole.Bdd
 {
     public class PeriscoleDbContext : DbContext
     {
-        
+        public PeriscoleDbContext(DbContextOptions<PeriscoleDbContext> options) : base(options) { }
+
         public DbSet<AnneeSco> AnneesSco { get; set; }
         public DbSet<Parametre> Parametres { get; set; }
         public DbSet<Eleve> Eleves { get; set; }
@@ -36,7 +37,7 @@ namespace Periscole.Bdd
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
 
             /*
             // Configuration de l'entité Professeur
@@ -74,7 +75,7 @@ namespace Periscole.Bdd
             modelBuilder.Entity<Eleve>().ToTable("Eleve","Eleve").UseTpcMappingStrategy();
 
             modelBuilder.Entity<Classe>().ToTable("Classe","Classe").UseTpcMappingStrategy();
-            modelBuilder.Entity<ClasseEleve>().ToTable("ClasseEleve", "Eleve");     // Affectation élèves à une classe pour l'AnneeSco
+            modelBuilder.Entity<ClasseEleve>().ToTable("ClasseEleve", "Classe");     // Affectation élèves à une classe pour l'AnneeSco
             
             
             modelBuilder.Entity<Matiere>().ToTable("Matiere", "Program").UseTpcMappingStrategy();
@@ -95,12 +96,19 @@ namespace Periscole.Bdd
             modelBuilder.Entity<Parametre>().ToTable("Parametre", "Referentiel");
             modelBuilder.Entity<Historique>().ToTable("Historique", "Referentiel").UseTpcMappingStrategy();
 
-            //Déclaration des PK clés
-            // Affectation élèves à une classe pour l'AnneeSco
+            //Déclaration des PK clés: pas nécessaire, déjà déclaré dans BaseEntity.
+            //modelBuilder.Entity<Eleve>().HasKey(e => e.Id);
+            //modelBuilder.Entity<Classe>().HasKey(c => c.Id);
+
+            // cles composées.
             modelBuilder.Entity<ClasseEleve>().HasKey(ec => new { ec.AnneeScoId, ec.ClasseId, ec.EleveId });
+            modelBuilder.Entity<Enseigner>().HasKey(e => new { e.AnneeScoId, e.ClasseId, e.MatiereId, e.ProfesseurId });
 
             // Déclaration des Foreign Key
             //modelBuilder.Entity<EleveClasse>().HasOne(ec => ec.Eleve).WithMany(e => e.EleveClasses).HasForeignKey(ec => ec.EleveId);
+            modelBuilder.Entity<Sequence>().HasOne(s => s.Id).WithMany(a => a.Sequences).HasForeignKey(s => s.AnneeScoId);
+
+
 
             //modelBuilder.Entity<EleveClasse>()
             //    .HasOne(ec => ec.Classe)
@@ -117,10 +125,13 @@ namespace Periscole.Bdd
             // Enregistre automatiquement toutes les class qui implémente l'interface IEntityTypeConfiguration
             //modelBuilder.ApplyConfigurationsFromAssembly(this.GetType().Assembly);
 
-            base.OnModelCreating(modelBuilder);
+            //base.OnModelCreating(modelBuilder);
         }
 
-        public PeriscoleDbContext(DbContextOptions<PeriscoleDbContext> options) : base(options) { }
+        // 1. add-migration amazingMigration
+        // 2. update-database
+
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlServer(@"Server=nameofyourdb;Database=nameofyourserver;TrustServerCertificate=True;Trusted_Connection=True;");
 
     }
 

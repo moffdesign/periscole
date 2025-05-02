@@ -15,11 +15,14 @@ namespace Periscole.Bdd.Domaine
         /// <summary>
         /// Année scolaire (ex. "2021/2022", "2024-2025")
         /// </summary>
-        public string? AnneeScolaire { get; set; }
+        public required string AnneeScolaire { get; set; }
 
         public DateTime? RentreeScolaire { get; set; }
         public DateTime? FinAnneeScolaire { get; set; }
 
-        //public ICollection<ClasseEleve> ClasseEleves { get; set; } = [];
+        /// <summary>
+        /// Matières/Classes/Profeesseurs enseignés durant l'année scolaire.
+        /// </summary>
+        public ICollection<Enseigner> Enseignements { get; set; } = [];
     }
 }

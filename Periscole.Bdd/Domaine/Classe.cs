@@ -23,13 +23,19 @@ namespace Periscole.Bdd.Domaine
         /// <summary>
         /// tous les élèves affectés à la classe.
         /// </summary>
-        public ICollection<ClasseEleve> ClasseEleves { get; set; } = [];
+        //public ICollection<ClasseEleve> ClasseEleves { get; set; } = [];
+
+        /// <summary>
+        /// Années/Classes/Matières enseignées durant l'année scolaire.
+        /// quelles sont les matières enseignées et par quel professeur
+        public ICollection<Enseigner> Enseignements { get; set; } = [];
 
         /// <summary>
         /// Professeur principal de la classe (ex. M. Antoine Ela).
         /// </summary>
         public int? ProfesseurId { get; set; }
         public Professeur? Professeur { get; set; }
+
     }
     
 }

@@ -8,7 +8,7 @@ namespace Periscole.Bdd.Domaine
 {
     public class LigneBulletin : BaseEntity
     {
-        public int BulletinNoteId { get; set; }
+        public int BulletinId { get; set; }
         public int MatiereId { get; set; }
         public decimal Moyenne { get; set; } = 0;   // Moyenne de la matière 
         public decimal Coefficiant { get; set; }
@@ -18,9 +18,12 @@ namespace Periscole.Bdd.Domaine
         
         public string? Appreciations { get; set; }
 
-        //public string? Travail { get; set; }
-        //public string? Conduite { get; set; }
-        //public string? Discipline { get; set; }
+        public string? Travail { get; set; }
+        public string? Conduite { get; set; }
+        public string? Discipline { get; set; }
+
+        public virtual Bulletin Bulletin { get; set; } = new();
+        public virtual Matiere Matiere { get; set; } = new();
 
     }
 }
