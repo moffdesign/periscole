@@ -13,7 +13,6 @@ namespace Periscole.Bdd.Domaine
         //public string? NomEcole { get; set; }
         //public string? NomGroupe { get; set; }
 
-        // Add any additional properties or methods specific to Professeur here
         /// <summary>
         /// Années/Classes/Matières enseignées durant l'année scolaire.
         /// Classes et Matières tenues par le professeur.

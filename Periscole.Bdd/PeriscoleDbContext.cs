@@ -95,34 +95,39 @@ namespace Periscole.Bdd
             modelBuilder.Entity<AnneeSco>().ToTable("AnneeSco", "Referentiel");
             modelBuilder.Entity<Parametre>().ToTable("Parametre", "Referentiel");
             modelBuilder.Entity<Historique>().ToTable("Historique", "Referentiel").UseTpcMappingStrategy();
+            modelBuilder.Entity<Salle>().ToTable("Salle", "Referentiel").UseTpcMappingStrategy();
 
             //Déclaration des PK clés: pas nécessaire, déjà déclaré dans BaseEntity.
             //modelBuilder.Entity<Eleve>().HasKey(e => e.Id);
-            //modelBuilder.Entity<Classe>().HasKey(c => c.Id);
+
+            //les indexes
+            modelBuilder.Entity<Eleve>().HasIndex(eleve => eleve.Matricule).IsUnique();
 
             // cles composées.
             modelBuilder.Entity<ClasseEleve>().HasKey(ec => new { ec.AnneeScoId, ec.ClasseId, ec.EleveId });
             modelBuilder.Entity<Enseigner>().HasKey(e => new { e.AnneeScoId, e.ClasseId, e.MatiereId, e.ProfesseurId });
 
             // Déclaration des Foreign Key
-            //modelBuilder.Entity<EleveClasse>().HasOne(ec => ec.Eleve).WithMany(e => e.EleveClasses).HasForeignKey(ec => ec.EleveId);
+            modelBuilder.Entity<Controle>().HasOne(s => s.AnneeSco).WithMany(a => a.Controles).HasForeignKey(s => s.AnneeScoId);
+            modelBuilder.Entity<Controle>().HasOne(s => s.Eleve).WithMany(e => e.Controles).HasForeignKey(s => s.EleveId);
+            modelBuilder.Entity<Controle>().HasOne(s => s.Classe).WithMany(c => c.Controles).HasForeignKey(s => s.ClasseId);
+
             modelBuilder.Entity<Sequence>().HasOne(s => s.AnneeSco).WithMany(a => a.Sequences).HasForeignKey(s => s.AnneeScoId);
             modelBuilder.Entity<Sequence>().HasOne(s => s.Eleve).WithMany(e => e.Sequences).HasForeignKey(s => s.EleveId);
             modelBuilder.Entity<Sequence>().HasOne(s => s.Classe).WithMany(c => c.Sequences).HasForeignKey(s => s.ClasseId);
 
+            modelBuilder.Entity<Bulletin>().HasOne(n => n.AnneeSco).WithMany(c => c.Bulletins).HasForeignKey(n => n.AnneeScoId);
+            modelBuilder.Entity<Bulletin>().HasOne(n => n.Eleve).WithMany(e => e.Bulletins).HasForeignKey(s => s.EleveId);
+            modelBuilder.Entity<Bulletin>().HasOne(n => n.Classe).WithMany(c => c.Bulletins).HasForeignKey(s => s.ClasseId);
 
+            modelBuilder.Entity<NoteSequence>().HasOne(n => n.Sequence).WithMany(s => s.NotesSequences).HasForeignKey(n => n.SequenceId);
+            modelBuilder.Entity<NoteEleve>().HasOne(n => n.Controle).WithMany(e => e.NotesEleves).HasForeignKey(n => n.ControleId);
+            modelBuilder.Entity<LigneBulletin>().HasOne(n => n.Bulletin).WithMany(m => m.LignesBulletins).HasForeignKey(n => n.BulletinId);
 
-            //modelBuilder.Entity<EleveClasse>()
-            //    .HasOne(ec => ec.Classe)
-            //    .WithMany(c => c.EleveClasse)
-            //    .HasForeignKey(ec => ec.ClasseId);
-
-            //modelBuilder.Entity<EleveClasse>()
-            //    .HasOne(ec => ec.AnneeSco)
-            //    .WithMany(a => a.EleveClasses)
-            //    .HasForeignKey(ec => ec.AnneeScoId);
-
-            //Transformation des enum en code
+            modelBuilder.Entity<Enseigner>().HasOne(e => e.AnneeSco).WithMany(a => a.Enseignements).HasForeignKey(e => e.AnneeScoId);
+            modelBuilder.Entity<Enseigner>().HasOne(e => e.Classe).WithMany(c => c.Enseignements).HasForeignKey(e => e.ClasseId);
+            modelBuilder.Entity<Enseigner>().HasOne(e => e.Matiere).WithMany(m => m.Enseignements).HasForeignKey(e => e.MatiereId);
+            modelBuilder.Entity<Enseigner>().HasOne(e => e.Professeur).WithMany(p => p.Enseignements).HasForeignKey(e => e.ProfesseurId);
 
             // Enregistre automatiquement toutes les class qui implémente l'interface IEntityTypeConfiguration
             //modelBuilder.ApplyConfigurationsFromAssembly(this.GetType().Assembly);

@@ -30,7 +30,10 @@ namespace Periscole.Bdd.Domaine
         /// quelles sont les matières enseignées et par quel professeur
         public ICollection<Enseigner> Enseignements { get; set; } = [];
 
+        public ICollection<Controle> Controles { get; set; } = [];
         public ICollection<Sequence> Sequences { get; set; } = [];
+        public ICollection<Bulletin> Bulletins { get; set; } = [];
+        
 
         /// <summary>
         /// Professeur principal de la classe (ex. M. Antoine Ela).

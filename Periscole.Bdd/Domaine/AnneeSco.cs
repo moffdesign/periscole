@@ -25,6 +25,9 @@ namespace Periscole.Bdd.Domaine
         /// </summary>
         public ICollection<Enseigner> Enseignements { get; set; } = [];
 
+        public ICollection<Controle> Controles { get; set; } = [];
         public ICollection<Sequence> Sequences { get; set; } = [];
+
+        public ICollection<Bulletin> Bulletins { get; set; } = [];
     }
 }

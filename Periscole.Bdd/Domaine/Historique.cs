@@ -9,7 +9,7 @@ namespace Periscole.Bdd.Domaine
     public class Historique : BaseEntity
     {
         public required string NomTable { get; set; }
-        public required string LigneSvgde { get; set; }     // ligne savgdee au format json
+        public required string LigneSvgde { get; set; }     // ligne svgde au format json
 
     }
 }

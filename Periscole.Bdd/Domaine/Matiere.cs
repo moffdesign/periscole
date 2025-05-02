@@ -15,5 +15,6 @@ namespace Periscole.Bdd.Domaine
         /// qui enseigne quelle matière dans quelle classe
         /// </summary>
         public ICollection<Enseigner> Enseignements { get; set; } = [];
+        //public ICollection<NoteEleve> NotesEleves { get; set; } = [];
     }
 }
