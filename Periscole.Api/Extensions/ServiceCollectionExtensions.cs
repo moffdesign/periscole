@@ -1,8 +1,8 @@
 using Microsoft.Extensions.DependencyInjection;
-using Periscole.Api.Interfaces;
+using Periscole.Api.Contrats;
 using Periscole.Api.Services;
 using Periscole.Bdd.Domaine;
-using Periscole.Bdd.Interfaces;
+using Periscole.Bdd.Contrats;
 using Periscole.Bdd.Repositories;
 
 namespace Periscole.Api.Extensions
@@ -45,7 +45,7 @@ namespace Periscole.Api.Extensions
             services.AddScoped<ISequenceService, SequenceService>();
             //services.AddScoped<IBulletinService, BulletinService>();
             //services.AddScoped<IEnseignerService, EnseignerService>();
-            services.AddScoped<IClasseEleveService, ClasseEleveService>();
+            //services.AddScoped<IClasseEleveService, ClasseEleveService>();
             
 
             return services;

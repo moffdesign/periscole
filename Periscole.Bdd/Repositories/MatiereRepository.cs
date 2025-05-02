@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Periscole.Bdd.Domaine;
-using Periscole.Bdd.Interfaces;
+using Periscole.Bdd.Contrats;
 
 namespace Periscole.Bdd.Repositories
 {

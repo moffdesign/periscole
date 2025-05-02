@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Periscole.Api.Interfaces;
+using Periscole.Api.Contrats;
 using Periscole.Bdd.Domaine;
-using Periscole.Bdd.Interfaces;
+using Periscole.Bdd.Contrats;
 
 namespace Periscole.Api.Services
 {

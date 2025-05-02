@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Periscole.Api.Interfaces;
+using Periscole.Api.Contrats;
 using Periscole.Api.Services;
 
 namespace Periscole.Api.Controllers

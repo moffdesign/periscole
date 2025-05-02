@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Periscole.Bdd.Domaine;
 
-namespace Periscole.Bdd.Interfaces
+namespace Periscole.Bdd.Contrats
 {
     public interface IMatiereRepository
     {

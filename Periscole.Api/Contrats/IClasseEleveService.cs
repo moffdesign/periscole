@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Periscole.Api;
 using Periscole.Bdd.Domaine;
 
-namespace Periscole.Bdd.Interfaces
+namespace Periscole.Bdd.Contrats
 {
     public interface IClasseEleveService
     {

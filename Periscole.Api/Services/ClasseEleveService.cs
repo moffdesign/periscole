@@ -7,7 +7,7 @@ using Azure.Core;
 using Microsoft.EntityFrameworkCore;
 using Periscole.Api;
 using Periscole.Bdd.Domaine;
-using Periscole.Bdd.Interfaces;
+using Periscole.Bdd.Contrats;
 
 namespace Periscole.Bdd.Repositories
 {

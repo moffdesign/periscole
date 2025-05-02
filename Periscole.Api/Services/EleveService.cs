@@ -1,4 +1,4 @@
-﻿using Periscole.Api.Interfaces;
+﻿using Periscole.Api.Contrats;
 using Periscole.Bdd.Domaine;
 
 namespace Periscole.Api.Services

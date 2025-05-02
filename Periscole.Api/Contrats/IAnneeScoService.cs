@@ -1,6 +1,6 @@
 ﻿using Periscole.Bdd.Domaine;
 
-namespace Periscole.Api.Interfaces
+namespace Periscole.Api.Contrats
 {
     public interface IAnneeScoService
     {
