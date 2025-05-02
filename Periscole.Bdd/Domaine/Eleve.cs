@@ -28,7 +28,7 @@ namespace Periscole.Bdd.Domaine
         // toutes les classes fréquentées dans l'établissement par l'élève
         //public ICollection<ClasseEleve> ClasseEleves { get; set; } = [];
 
-
+        public ICollection<Sequence> Sequences { get; set; } = [];
 
     }
 }

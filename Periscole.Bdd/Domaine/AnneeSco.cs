@@ -24,5 +24,7 @@ namespace Periscole.Bdd.Domaine
         /// Matières/Classes/Profeesseurs enseignés durant l'année scolaire.
         /// </summary>
         public ICollection<Enseigner> Enseignements { get; set; } = [];
+
+        public ICollection<Sequence> Sequences { get; set; } = [];
     }
 }

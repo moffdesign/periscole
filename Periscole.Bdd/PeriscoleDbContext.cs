@@ -106,7 +106,9 @@ namespace Periscole.Bdd
 
             // Déclaration des Foreign Key
             //modelBuilder.Entity<EleveClasse>().HasOne(ec => ec.Eleve).WithMany(e => e.EleveClasses).HasForeignKey(ec => ec.EleveId);
-            modelBuilder.Entity<Sequence>().HasOne(s => s.Id).WithMany(a => a.Sequences).HasForeignKey(s => s.AnneeScoId);
+            modelBuilder.Entity<Sequence>().HasOne(s => s.AnneeSco).WithMany(a => a.Sequences).HasForeignKey(s => s.AnneeScoId);
+            modelBuilder.Entity<Sequence>().HasOne(s => s.Eleve).WithMany(e => e.Sequences).HasForeignKey(s => s.EleveId);
+            modelBuilder.Entity<Sequence>().HasOne(s => s.Classe).WithMany(c => c.Sequences).HasForeignKey(s => s.ClasseId);
 
 
 
