@@ -39,7 +39,7 @@ namespace Periscole.Bdd.Domaine
         /// Professeur principal de la classe (ex. M. Antoine Ela).
         /// </summary>
         public int? ProfesseurId { get; set; }
-        public Professeur? Professeur { get; set; }
+        public virtual Professeur? Professeur { get; set; }
 
     }
     

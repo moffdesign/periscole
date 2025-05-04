@@ -2,6 +2,8 @@
 using Periscole.Api.Contrats;
 using Periscole.Bdd.Domaine;
 using Periscole.Bdd.Contrats;
+using System.Linq.Expressions;
+using System.Linq;
 
 namespace Periscole.Api.Services
 {
@@ -165,6 +167,41 @@ namespace Periscole.Api.Services
                 if (matieres == null || !matieres.Any())
                 {
                     return Result<IList<Matiere>>.Fail("NOT_FOUND", "Aucune matière trouvée pour le professeur spécifiée.", 404);
+                }
+
+                return Result<IList<Matiere>>.Ok(matieres, 200);
+            }
+            catch (Exception)
+            {
+                _logger.LogError($"Erreur lors de la récupération des matières pour le professeur avec ID {professeurId}");
+                return Result<IList<Matiere>>.Fail("ECHEC", "Erreur lors de la récupération des matières.", 500);
+            }
+        }
+
+        public async Task<Result<IList<Matiere>>> RecupererMatieresProfesseur(int anneeScoId, int professeurId, Expression<Func<Enseigner, bool>>? filtreSupplementaire = null)
+        {
+            try
+            {
+                var query = _enseignerRepository.Query()
+                    .Where(e => e.AnneeScoId == anneeScoId && e.ProfesseurId == professeurId);
+
+                if (filtreSupplementaire != null)
+                {
+                    query = query.Where(filtreSupplementaire);
+                }
+
+                var matieres = await query
+                    .Join(
+                        _matiereRepository.Query(),
+                        enseigner => enseigner.MatiereId,
+                        matiere => matiere.Id,
+                        (enseigner, matiere) => matiere
+                    )
+                    .ToListAsync();
+
+                if (matieres == null || !matieres.Any())
+                {
+                    return Result<IList<Matiere>>.Fail("NOT_FOUND", "Aucune matière trouvée pour le professeur spécifié.", 404);
                 }
 
                 return Result<IList<Matiere>>.Ok(matieres, 200);
